@@ -2,10 +2,23 @@
 
 class User
 {
+    function register($email, $password)
+    {
+        $hash = $this->hashPassword($password);
+    }
+
+    private function hashPassword($password)
+    {
+        return sha1($password);
+    }
+
     function login($email, $password)
     {
         global $db;
-        $query = "SELECT id, firstname,lastname, email FROM user WHERE email='$email' AND password='$password'";
+
+        $hash = $this->hashPassword($password);
+
+        $query = "SELECT id, firstname,lastname, email FROM user WHERE email='$email' AND password='$hash'";
         $result = $db->query($query);
         if (false == $result) {
             echo $query . "<br>";
@@ -25,11 +38,6 @@ class User
         unset($_SESSION['login_user']);
     }
 
-    function isLogin()
-    {
-        return isset($_SESSION['login_user']);
-    }
-
     function getLoginUser()
     {
         if ($this->isLogin()) {
@@ -37,6 +45,11 @@ class User
         } else {
             return false;
         }
+    }
+
+    function isLogin()
+    {
+        return isset($_SESSION['login_user']);
     }
 }
 

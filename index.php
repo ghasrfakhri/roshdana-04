@@ -1,8 +1,6 @@
 <?php
 require_once 'include/init.php';
 
-$x = new Xyz;
-
 $user = new User();
 if (!$user->isLogin()) {
     redirectToUrl('login.php');

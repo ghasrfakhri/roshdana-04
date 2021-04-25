@@ -13,7 +13,7 @@ function isPostMethod()
 }
 
 spl_autoload_register(function ($className) {
-    $classFileName = $className . ".php";
+    $classFileName = __DIR__ . '/' . $className . ".php";
     if (is_file($classFileName)) {
         require $classFileName;
     }

@@ -6,8 +6,8 @@ if (isPostMethod()) {
     $email = $_POST['email'];
     $password = $_POST['password'];
 
-
-    if (login($email, $password)) {
+    $user = new User;
+    if ($user->login($email, $password)) {
         redirectToUrl('index.php');
     } else {
         $msg = "invalid username or password";

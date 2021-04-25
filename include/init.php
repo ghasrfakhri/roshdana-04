@@ -1,5 +1,5 @@
 <?php
-$db = new mysqli('localhost', 'root', '','roshdana02');
+$db = new mysqli('localhost', 'root', '', 'roshdana02');
 session_start();
 function redirectToUrl($url)
 {
@@ -12,4 +12,9 @@ function isPostMethod()
     return $_SERVER['REQUEST_METHOD'] == 'POST';
 }
 
-require 'user.php';
+spl_autoload_register(function ($className) {
+    $classFileName = $className . ".php";
+    if (is_file($classFileName)) {
+        require $classFileName;
+    }
+});

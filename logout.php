@@ -1,6 +1,6 @@
 <?php
 require 'include/init.php';
 
-
-logout();
+$user = new User();
+$user->logout();
 redirectToUrl('login.php');

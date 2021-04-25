@@ -1,7 +1,10 @@
 <?php
 require_once 'include/init.php';
 
-if (!isLogin()) {
+$x = new Xyz;
+
+$user = new User();
+if (!$user->isLogin()) {
     redirectToUrl('login.php');
 }
 
@@ -17,7 +20,7 @@ if (!isLogin()) {
     <title>Document</title>
 </head>
 <body>
-<h1>Hello <?= isLogin()?getLoginUser()['firstname']:'User'; ?></h1>
+<h1>Hello <?= $user->isLogin() ? $user->getLoginUser()['firstname'] : 'User'; ?></h1>
 <a href="logout.php">Logout</a>
 </body>
 </html>

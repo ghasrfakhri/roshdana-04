@@ -3,8 +3,8 @@ require 'include/init.php';
 
 $msg = "";
 if (isPostMethod()) {
-    $email = $_POST['email'];
-    $password = $_POST['password'];
+    $email = $db->real_escape_string($_POST['email']);
+    $password = $db->real_escape_string($_POST['password']);
 
     $user = new User;
     if ($user->login($email, $password)) {

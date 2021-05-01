@@ -18,3 +18,22 @@ spl_autoload_register(function ($className) {
         require $classFileName;
     }
 });
+
+ob_start();
+
+$content = "";
+$user = new User();
+$path = '/04';
+$showTemplate = true;
+
+
+register_shutdown_function(function () {
+    global $content, $user, $path, $showTemplate;
+
+    if ($showTemplate == true) {
+        $content = ob_get_clean();
+        include __DIR__ . '/../template/template.php';
+    }
+
+});
+

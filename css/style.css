@@ -1,0 +1,32 @@
+.main {
+    width: 1000px;
+    height: 300px;
+    margin: 0 auto;
+    background-color: #f2f2f2;
+}
+
+.header {
+    height: 80px;
+    background-color: #e2e2e2;
+}
+
+.menu {
+    float: left;
+    height: 300px;
+    width: 200px;
+    background-color: #ffe2f2;
+}
+
+.content {
+    float: left;
+    height: 300px;
+    width: 800px    ;
+    background-color: #ffe2ff;
+}
+
+.footer {
+    clear: both;
+    background-color: #efe2ef;
+    height: 50px;
+
+}

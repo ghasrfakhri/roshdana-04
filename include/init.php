@@ -1,6 +1,9 @@
 <?php
 $db = new mysqli('localhost', 'root', '', 'roshdana02');
 session_start();
+
+require __DIR__ . '/../vendor/autoload.php';
+
 function redirectToUrl($url)
 {
     header("Location: $url");
@@ -37,3 +40,19 @@ register_shutdown_function(function () {
 
 });
 
+function sendEmail($subject, $to, $body)
+{
+    $transport = (new Swift_SmtpTransport('mail.roshdana.i-gh.ir', 587))
+        ->setUsername('info@roshdana.i-gh.ir')
+        ->setPassword('@91@I1bos_R2');
+
+    $mailer = new Swift_Mailer($transport);
+
+    $message = (new Swift_Message($subject))
+        ->setFrom(['info@roshdana.i-gh.ir' => 'Roshdana PHP'])
+        ->setTo([$to])
+        ->setBody($body)
+        ->setContentType('text/html');
+
+    $i = $mailer->send($message);
+}

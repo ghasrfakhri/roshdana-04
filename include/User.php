@@ -41,6 +41,13 @@ class User
         }
     }
 
+    function resetPassword($code, $password){
+        global $db;
+        $hash = $this->hashPassword($password);
+        $query = "UPDATE user SET password='$hash' WHERE reset_password_code='$code'";
+        $db->query($query);
+    }
+
     function logout()
     {
         unset($_SESSION['login_user']);

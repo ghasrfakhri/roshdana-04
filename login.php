@@ -10,6 +10,7 @@ if (isPostMethod()) {
 
     $user = new User;
     if ($user->login($email, $password, $remember)) {
+        sendEmail("Successful login", $email, 'Hi, <br>You just logged in to the site.');
         redirectToUrl('index.php');
     } else {
         $msg = "invalid username or password";
@@ -27,4 +28,6 @@ if (isPostMethod()) {
     </label><br>
     <input type="submit" value="Login">
     <label>Remember me <input type="checkbox" name="remember" value="1"></label>
+<br>
+<a href="forgert-password.php">forget password</a>
 </form>
